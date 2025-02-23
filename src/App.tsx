@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Client } from "./Client/RouterClient"
+import ImageDisplay from "./Components/ImageDisplay"
+import Loading from "./Components/Loading"
 
-let found = false
+let clientSetter: any|undefined = undefined
+
+const clientLoader = window.setInterval(() => {
+    if (clientSetter !== undefined && window.opener !== undefined && window.opener !== null) {
+        clientSetter(new Client(window.opener))
+        clientSetter = undefined
+        window.clearInterval(clientLoader)
+    }
+}, 500)
 
 function App() {
     const [client, setClient] = useState<Client|undefined>(undefined)
 
-    useEffect(() => {
-        if (!found && window.opener !== undefined && window.opener != null) {
-            found = true
-            setClient(new Client(window.opener))
-        }  
-    }, [window.opener])
+    clientSetter = (c:Client) => setClient(c)
 
-    return (
-        <div>
-            <button onClick={() => client?.fetch("/ping",{data:"aaaa"}).then(console.log)}>test</button>
-        </div>
-    )
+    return client !== undefined ? <ImageDisplay client={client}/> : <Loading/>
 }
 
 export default App
