@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Imager",
+  "description": "Serves Discord images to crossorigin sites",
+  "version": "1.0",
+
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["scripts/injections/display.html"],
+      "matches": ["*://*/*", "file:///*"]
+    }
+  ],
+
+  "action": {
+    "default_popup": "./popup/menu.html"
+  },
+
+  "background": {
+    "service_worker": "./scripts/service_worker.js",
+    "type": "module"
+  }
+}
+
