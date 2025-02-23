@@ -27,6 +27,7 @@ function ImageDisplay({client}: ImageDisplayProps) {
             if ((target.scrollTop+target.clientHeight)/target.scrollHeight >= .99 && scroll) {
                 scroll = false
 
+                // for scrolling through messages from latest to oldest
                 console.log("scrolling up...")
                 client.fetch("/scrollUp",{}).then(e => {
                     console.log("status:",e)
