@@ -1,9 +1,6 @@
-# GH Page Template
+# Image Viewer
+Receives images via postMessage <br>
 Made using React + Vite + TS <br>
-Change files in: <br>
-- vite.config.ts {base:changeme}
-- package.json {name:changeme, homepage:changeme}
-- index.html <title>changeme</title> <br>
 
 # Build Instructions
 ## build

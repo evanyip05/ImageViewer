@@ -1,14 +1,23 @@
-import {ReactNode, useState } from "react"
-import HomePage from "./Pages/Home"
+import { useEffect, useState } from "react"
+import { Client } from "./Client/RouterClient"
 
-export var PageSetter = (_: ReactNode) => {} 
+let found = false
 
 function App() {
-    const [currentPage, setCurrentPage] = useState<ReactNode>(<HomePage/>)
+    const [client, setClient] = useState<Client|undefined>(undefined)
 
-    PageSetter = setCurrentPage
+    useEffect(() => {
+        if (!found && window.opener !== undefined && window.opener != null) {
+            found = true
+            setClient(new Client(window.opener))
+        }  
+    }, [window.opener])
 
-    return currentPage
+    return (
+        <div>
+            <button onClick={() => client?.fetch("/ping",{data:"aaaa"}).then(console.log)}>test</button>
+        </div>
+    )
 }
 
 export default App
