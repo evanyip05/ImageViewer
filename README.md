@@ -11,9 +11,8 @@ npm run build <br>
 npm run dev <br>
 or <br>
 npm run dev -- --host <br>
-
-# Deploy Instructions
-npm run deploy
+## Deploy
+npm run deploy <br>
 
 # Chrome Extension Install
 go to Browser settings <br>
