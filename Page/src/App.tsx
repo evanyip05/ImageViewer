@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { Client } from "./Client/RouterClient"
-import ImageDisplay from "./Components/ImageDisplay"
-import Loading from "./Components/Loading"
+import Loading from "./Pages/Loading"
+
+import DiscordImageDisplay from "./Pages/DiscordImageDisplay"
+import EHImageDisplay from "./Pages/EHImageDisplay"
 
 let clientSetter: any|undefined = undefined
 
@@ -18,7 +20,8 @@ function App() {
 
     clientSetter = (c:Client) => setClient(c)
 
-    return client !== undefined ? <ImageDisplay client={client}/> : <Loading/>
+    // return client !== undefined ? <DiscordImageDisplay client={client}/> : <Loading/>
+    return client !== undefined ? <EHImageDisplay client={client}/> : <Loading/>
 }
 
 export default App

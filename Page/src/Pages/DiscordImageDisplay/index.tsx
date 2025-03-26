@@ -1,14 +1,14 @@
 import { useState } from "react"
 import { Client } from "../../Client/RouterClient"
 
-type ImageDisplayProps = {
+type DiscordImageDisplayProps = {
     client: Client
 }
 
 let firstRender = true
 let scroll = true
 
-function ImageDisplay({client}: ImageDisplayProps) {
+function DiscordImageDisplay({client}: DiscordImageDisplayProps) {
     const [images, setImages] = useState<string[]>([])
 
     if (firstRender) {
@@ -73,4 +73,4 @@ function ImageDisplay({client}: ImageDisplayProps) {
     )
 }
 
-export default ImageDisplay
+export default DiscordImageDisplay
