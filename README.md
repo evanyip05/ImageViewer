@@ -11,14 +11,13 @@ npm run build <br>
 npm run dev <br>
 or <br>
 npm run dev -- --host <br>
-
-# Deploy Instructions
-npm run deploy
+## Deploy
+npm run deploy <br>
 
 # Chrome Extension Install
-- Browser settings 
-- Extensions 
-- Manage Extensions 
-- Enable Developer Mode 
-- Load Unpacked
-- Use /Extension Folder
+go to Browser settings <br>
+open Extensions in sidebar <br>
+click Manage Extensions <br>
+toggle Enable Developer Mode switch up top <br>
+click Load Unpacked button top left <br>
+choose Extension Folder from this repo <br>
