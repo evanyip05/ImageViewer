@@ -16,6 +16,26 @@
 
 			/* * ::-webkit-scrollbar {display: none;} */
 
+      /* Customize the scrollbar */
+      ::-webkit-scrollbar {
+          width: 12px; /* Width of the scrollbar */
+          height: 12px; /* Height of the scrollbar (for horizontal) */
+      }
+
+      ::-webkit-scrollbar-track {
+          background: silver; /* Background of the scrollbar track */
+          border-radius: 10px; /* Round edges */
+      }
+
+      ::-webkit-scrollbar-thumb {
+          background: darkgray; /* Color of the scrollbar thumb */
+          border-radius: 10px; /* Round edges */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+          background: grey; /* Color when hovering over the thumb */
+      }
+
       body {
         position: fixed;
         width: 100vw;

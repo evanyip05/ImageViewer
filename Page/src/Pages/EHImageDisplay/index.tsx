@@ -1,13 +1,95 @@
+import { useState } from "react"
 import { Client } from "../../Client/RouterClient"
+import ImageIcon from "../../Components/ImageIcon"
+import SearchIcon from "../../Components/SearchIcon"
+
+import TextInput from "../../Components/TextInput"
 
 type EHImageDisplayProps = {
     client: Client
 }
 
+
 function EHImageDisplay({client}: EHImageDisplayProps) {
+    const [searchValue, setSearchValue] = useState<string>("")
+
+    // search field
+    const [Search, getSearchValue] = TextInput({
+        style:{width:"40%", padding:"0px 10px", lineHeight:"5vh", border:"none", borderRadius:"7px 0 0 7px", outline:"none", backgroundColor:"darkGrey"}, 
+        placeholder:"Search", 
+        onInput:(e: any) => {if (e?.key == "Enter") {setSearchValue(getSearchValue())}}
+    })
+
+    return (
+        <div style={{display:"flex", flexDirection:"column", width:"100%", height:"100%"}}>
+
+            {/* NAVBAR */}
+            <div style={{display:"flex", flexDirection:"row", width:"100%", height:"6%", backgroundColor:"grey"}}>
+                {/* LEFT */}
+                <div style={{display:"flex", flexDirection:"row",width:"auto", height:"100%", padding:".5vh", flexGrow:"1"}}>
+                    <div style={{display:"flex", justifyContent:"center", width:"7.5vh", height:"5vh", marginRight:"1vh"}}>
+                        <ImageIcon style={{width:"100%", height:"100%"}}/>
+                    </div>
+
+                    {Search}
+
+                    <div style={{width:"5vh", height:"100%", padding:".5vh", borderRadius:"0 7px 7px 0", backgroundColor:"red"}} onClick={() => setSearchValue(getSearchValue())}>
+                        <SearchIcon style={{width:"100%", height:"100%"}}/>
+                    </div>
+                </div>
+
+                {/* RIGHT */}
+                <div style={{display:"flex", flexDirection:"row", height:"100%"}}>
+                    <div style={{height:"100%", padding:"0 10px", lineHeight:"6vh", backgroundColor:"darkgray"}}>
+                        login
+                    </div>
+                    <div style={{height:"100%", padding:"0 10px", lineHeight:"6vh", backgroundColor:"red"}}>
+                        reigster
+                    </div>
+                </div>
+            </div>
+
+
+            {/* CONTENT */}
+            <div style={{display:"flex", flexDirection:"column", width:"100%", height:"auto", flexGrow:"1", overflowY:"auto", backgroundColor:"dimgrey"}}>
+                <div style={{display:"flex", justifyContent:"center", width:"100%", minHeight:"50px", padding:"10px 0"}}>
+                    <div style={{height:"100%", padding:"0 10px", borderRadius:"7px", lineHeight:"30px", backgroundColor:"grey"}}>
+                        Search: {searchValue}
+                    </div>
+                </div>
+
+                {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,1,1,1,1,1,1,1,1,1,1,12,13,14,15,16,17,18,19,20].map(d => (
+                    <div style={{display:"flex", flexDirection:"row", width:"100%", minHeight:"50px"}}>
+                        <div>{d}</div>
+                        <div>.    title</div>
+                        <div>.     link</div>
+                    </div>
+                ))}
+
+
+
+                {/* <div style={{display:"flex", flexDirection:"row", width:"100%", height:"50px"}}>
+                    <div>thumb</div>
+                    <div>.    title</div>
+                    <div>.     link</div>
+                </div> */}
+
+                {/* <div style={{display:"flex", justifyContent:"center", width:"100%", height:"100%"}}>
+                    <button style={{height:"20px", transform:"translateY(50vh)"}} onClick={() => {console.log(getValue())}}>test</button>
+                </div> */}
+
+            </div>
+        </div>
+
+    )
+}
+
+export default EHImageDisplay
+
+/*
 
     const doFetch = () => {
-        client.fetch("/fetchHomepageGalleries", {query:"f_search=cerv"}).then(galleries => {
+        client.fetch("/fetchHomepageGalleries", {query:"f_search="}).then(galleries => {
             const galleryURL = galleries[0]
             client.fetch("/fetchSameOrigin", {route:galleryURL}).then(gallery => {
                 const dom = new DOMParser().parseFromString(gallery, "text/html")
@@ -26,7 +108,7 @@ function EHImageDisplay({client}: EHImageDisplayProps) {
                 already loaded page 0
                 or 
                 query the grid, then itterate through a single page of the grid, and a single or few images at a time
-                */
+                /
 
 
                 console.log(imagesPerPage, totalImages, pages)
@@ -101,11 +183,4 @@ function EHImageDisplay({client}: EHImageDisplayProps) {
         })
     }
 
-    return (
-        <div style={{display:"flex", justifyContent:"center", width:"100%", height:"100%"}}>
-            <button style={{height:"20px", transform:"translateY(50vh)"}} onClick={doFetch}>test</button>
-        </div>
-    )
-}
-
-export default EHImageDisplay
+*/
